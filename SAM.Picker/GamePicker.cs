@@ -42,6 +42,7 @@ namespace SAM.Picker
 
         private readonly Dictionary<uint, GameInfo> _Games;
         private readonly List<GameInfo> _FilteredGames;
+        private int _SelectedGameIndex;
 
         private readonly List<string> _LogosAttempted;
         private readonly ConcurrentQueue<GameInfo> _LogoQueue;
@@ -54,6 +55,7 @@ namespace SAM.Picker
         {
             this._Games = new Dictionary<uint, GameInfo>();
             this._FilteredGames = new List<GameInfo>();
+            this._SelectedGameIndex = -1;
             this._LogosAttempted = new List<string>();
             this._LogoQueue = new ConcurrentQueue<GameInfo>();
 
@@ -132,6 +134,7 @@ namespace SAM.Picker
 
         private void RefreshGames()
         {
+            this._SelectedGameIndex = -1;
             this._FilteredGames.Clear();
             foreach (var info in this._Games.Values.OrderBy(gi => gi.Name))
             {
@@ -362,10 +365,14 @@ namespace SAM.Picker
             this._CallbackTimer.Enabled = true;
         }
 
+        private void OnSelectGame(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            this._SelectedGameIndex = e.ItemIndex;
+        }
+
         private void OnActivateGame(object sender, EventArgs e)
         {
-            var focusedItem = (sender as DoubleBufferedListView).FocusedItem;
-            var index = focusedItem != null ? focusedItem.Index : -1;
+            var index = this._SelectedGameIndex;
             if (index < 0 || index >= this._FilteredGames.Count)
             {
                 return;
