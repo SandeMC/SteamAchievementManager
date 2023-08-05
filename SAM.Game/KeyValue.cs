@@ -48,7 +48,7 @@ namespace SAM.Game
 
                 var child = this.Children.SingleOrDefault(
                     c => string.Compare(c.Name, key, StringComparison.InvariantCultureIgnoreCase) == 0);
-                
+
                 if (child == null)
                 {
                     return _Invalid;
@@ -84,29 +84,29 @@ namespace SAM.Game
             {
                 case KeyValueType.String:
                 case KeyValueType.WideString:
-                {
-                    int value;
-                    if (int.TryParse((string)this.Value, out value) == false)
                     {
-                        return defaultValue;
+                        int value;
+                        if (int.TryParse((string)this.Value, out value) == false)
+                        {
+                            return defaultValue;
+                        }
+                        return value;
                     }
-                    return value;
-                }
 
                 case KeyValueType.Int32:
-                {
-                    return (int)this.Value;
-                }
+                    {
+                        return (int)this.Value;
+                    }
 
                 case KeyValueType.Float32:
-                {
-                    return (int)((float)this.Value);
-                }
+                    {
+                        return (int)((float)this.Value);
+                    }
 
                 case KeyValueType.UInt64:
-                {
-                    return (int)((ulong)this.Value & 0xFFFFFFFF);
-                }
+                    {
+                        return (int)((ulong)this.Value & 0xFFFFFFFF);
+                    }
             }
 
             return defaultValue;
@@ -123,29 +123,29 @@ namespace SAM.Game
             {
                 case KeyValueType.String:
                 case KeyValueType.WideString:
-                {
-                    float value;
-                    if (float.TryParse((string)this.Value, out value) == false)
                     {
-                        return defaultValue;
+                        float value;
+                        if (float.TryParse((string)this.Value, out value) == false)
+                        {
+                            return defaultValue;
+                        }
+                        return value;
                     }
-                    return value;
-                }
 
                 case KeyValueType.Int32:
-                {
-                    return (int)this.Value;
-                }
+                    {
+                        return (int)this.Value;
+                    }
 
                 case KeyValueType.Float32:
-                {
-                    return (float)this.Value;
-                }
+                    {
+                        return (float)this.Value;
+                    }
 
                 case KeyValueType.UInt64:
-                {
-                    return (ulong)this.Value & 0xFFFFFFFF;
-                }
+                    {
+                        return (ulong)this.Value & 0xFFFFFFFF;
+                    }
             }
 
             return defaultValue;
@@ -162,29 +162,29 @@ namespace SAM.Game
             {
                 case KeyValueType.String:
                 case KeyValueType.WideString:
-                {
-                    int value;
-                    if (int.TryParse((string)this.Value, out value) == false)
                     {
-                        return defaultValue;
+                        int value;
+                        if (int.TryParse((string)this.Value, out value) == false)
+                        {
+                            return defaultValue;
+                        }
+                        return value != 0;
                     }
-                    return value != 0;
-                }
 
                 case KeyValueType.Int32:
-                {
-                    return ((int)this.Value) != 0;
-                }
+                    {
+                        return ((int)this.Value) != 0;
+                    }
 
                 case KeyValueType.Float32:
-                {
-                    return ((int)((float)this.Value)) != 0;
-                }
+                    {
+                        return ((int)((float)this.Value)) != 0;
+                    }
 
                 case KeyValueType.UInt64:
-                {
-                    return ((ulong)this.Value) != 0;
-                }
+                    {
+                        return ((ulong)this.Value) != 0;
+                    }
             }
 
             return defaultValue;
@@ -248,7 +248,7 @@ namespace SAM.Game
                     {
                         break;
                     }
-                
+
                     var current = new KeyValue
                     {
                         Type = type,
@@ -258,62 +258,62 @@ namespace SAM.Game
                     switch (type)
                     {
                         case KeyValueType.None:
-                        {
-                            current.ReadAsBinary(input);
-                            break;
-                        }
+                            {
+                                current.ReadAsBinary(input);
+                                break;
+                            }
 
                         case KeyValueType.String:
-                        {
-                            current.Valid = true;
-                            current.Value = input.ReadStringUnicode();
-                            break;
-                        }
+                            {
+                                current.Valid = true;
+                                current.Value = input.ReadStringUnicode();
+                                break;
+                            }
 
                         case KeyValueType.WideString:
-                        {
-                            throw new FormatException("wstring is unsupported");
-                        }
+                            {
+                                throw new FormatException("wstring is unsupported");
+                            }
 
                         case KeyValueType.Int32:
-                        {
-                            current.Valid = true;
-                            current.Value = input.ReadValueS32();
-                            break;
-                        }
+                            {
+                                current.Valid = true;
+                                current.Value = input.ReadValueS32();
+                                break;
+                            }
 
                         case KeyValueType.UInt64:
-                        {
-                            current.Valid = true;
-                            current.Value = input.ReadValueU64();
-                            break;
-                        }
+                            {
+                                current.Valid = true;
+                                current.Value = input.ReadValueU64();
+                                break;
+                            }
 
                         case KeyValueType.Float32:
-                        {
-                            current.Valid = true;
-                            current.Value = input.ReadValueF32();
-                            break;
-                        }
+                            {
+                                current.Valid = true;
+                                current.Value = input.ReadValueF32();
+                                break;
+                            }
 
                         case KeyValueType.Color:
-                        {
-                            current.Valid = true;
-                            current.Value = input.ReadValueU32();
-                            break;
-                        }
+                            {
+                                current.Valid = true;
+                                current.Value = input.ReadValueU32();
+                                break;
+                            }
 
                         case KeyValueType.Pointer:
-                        {
-                            current.Valid = true;
-                            current.Value = input.ReadValueU32();
-                            break;
-                        }
+                            {
+                                current.Valid = true;
+                                current.Value = input.ReadValueU32();
+                                break;
+                            }
 
                         default:
-                        {
-                            throw new FormatException();
-                        }
+                            {
+                                throw new FormatException();
+                            }
                     }
 
                     if (input.Position >= input.Length)

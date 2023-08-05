@@ -22,7 +22,6 @@
 
 using System;
 using System.Diagnostics;
-using System.Net;
 using System.Windows.Forms;
 
 namespace SAM.Game

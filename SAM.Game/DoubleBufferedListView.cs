@@ -24,11 +24,11 @@ using System.Windows.Forms;
 
 namespace SAM.Game
 {
-	internal class DoubleBufferedListView : ListView
-	{
-		public DoubleBufferedListView()
-		{
-			base.DoubleBuffered = true;
-		}
-	}
+    internal class DoubleBufferedListView : ListView
+    {
+        public DoubleBufferedListView()
+        {
+            base.DoubleBuffered = true;
+        }
+    }
 }

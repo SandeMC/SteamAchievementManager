@@ -19,7 +19,7 @@ namespace SAM.Game {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -63,6 +63,16 @@ namespace SAM.Game {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Done {
+            get {
+                object obj = ResourceManager.GetObject("Done", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Download {
             get {
                 object obj = ResourceManager.GetObject("Download", resourceCulture);
@@ -73,9 +83,9 @@ namespace SAM.Game {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Invert {
+        internal static System.Drawing.Bitmap Error {
             get {
-                object obj = ResourceManager.GetObject("Invert", resourceCulture);
+                object obj = ResourceManager.GetObject("Error", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +103,19 @@ namespace SAM.Game {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Refresh {
+        internal static System.Drawing.Bitmap Lock_Open {
             get {
-                object obj = ResourceManager.GetObject("Refresh", resourceCulture);
+                object obj = ResourceManager.GetObject("Lock Open", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Reload {
+            get {
+                object obj = ResourceManager.GetObject("Reload", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +133,9 @@ namespace SAM.Game {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Sad {
+        internal static System.Drawing.Bitmap Search {
             get {
-                object obj = ResourceManager.GetObject("Sad", resourceCulture);
+                object obj = ResourceManager.GetObject("Search", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,19 +143,9 @@ namespace SAM.Game {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Save {
+        internal static System.Drawing.Bitmap Swap {
             get {
-                object obj = ResourceManager.GetObject("Save", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Unlock {
-            get {
-                object obj = ResourceManager.GetObject("Unlock", resourceCulture);
+                object obj = ResourceManager.GetObject("Swap", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

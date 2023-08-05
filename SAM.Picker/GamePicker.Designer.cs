@@ -36,22 +36,22 @@
             this._CallbackTimer = new System.Windows.Forms.Timer(this.components);
             this._PickerToolStrip = new System.Windows.Forms.ToolStrip();
             this._RefreshGamesButton = new System.Windows.Forms.ToolStripButton();
-            this._AddGameTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this._AddGameButton = new System.Windows.Forms.ToolStripButton();
+            this._FindGamesLabel = new System.Windows.Forms.ToolStripLabel();
+            this._SearchGameTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this._ToolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this._FilterDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
             this._FilterGamesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._FilterDemosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._FilterModsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._FilterJunkMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this._ToolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this._FindGamesLabel = new System.Windows.Forms.ToolStripLabel();
-            this._SearchGameTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this._GameListView = new SAM.Picker.DoubleBufferedListView();
+            this._AddGameButton = new System.Windows.Forms.ToolStripButton();
+            this._AddGameTextBox = new System.Windows.Forms.ToolStripTextBox();
             this._PickerStatusStrip = new System.Windows.Forms.StatusStrip();
             this._PickerStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this._DownloadStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this._LogoWorker = new System.ComponentModel.BackgroundWorker();
             this._ListWorker = new System.ComponentModel.BackgroundWorker();
+            this._GameListView = new SAM.Picker.DoubleBufferedListView();
             _ToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             _ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this._PickerToolStrip.SuspendLayout();
@@ -81,22 +81,22 @@
             // 
             // _PickerToolStrip
             // 
+            this._PickerToolStrip.BackColor = System.Drawing.SystemColors.Control;
             this._PickerToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this._RefreshGamesButton,
             _ToolStripSeparator1,
-            this._AddGameTextBox,
-            this._AddGameButton,
-            _ToolStripSeparator2,
-            this._FilterDropDownButton,
-            this._ToolStripSeparator3,
             this._FindGamesLabel,
-            this._SearchGameTextBox});
+            this._SearchGameTextBox,
+            this._ToolStripSeparator3,
+            this._FilterDropDownButton,
+            _ToolStripSeparator2,
+            this._AddGameTextBox,
+            this._AddGameButton});
             this._PickerToolStrip.Location = new System.Drawing.Point(0, 0);
             this._PickerToolStrip.Name = "_PickerToolStrip";
-            this._PickerToolStrip.Size = new System.Drawing.Size(742, 25);
+            this._PickerToolStrip.Size = new System.Drawing.Size(1152, 25);
             this._PickerToolStrip.TabIndex = 1;
             this._PickerToolStrip.Text = "toolStrip1";
-            this._PickerToolStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this._PickerToolStrip_ItemClicked);
             // 
             // _RefreshGamesButton
             // 
@@ -107,20 +107,25 @@
             this._RefreshGamesButton.Text = "Refresh Games";
             this._RefreshGamesButton.Click += new System.EventHandler(this.OnRefresh);
             // 
-            // _AddGameTextBox
+            // _FindGamesLabel
             // 
-            this._AddGameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this._AddGameTextBox.Name = "_AddGameTextBox";
-            this._AddGameTextBox.Size = new System.Drawing.Size(100, 25);
+            this._FindGamesLabel.Image = global::SAM.Picker.Resources.Search;
+            this._FindGamesLabel.Name = "_FindGamesLabel";
+            this._FindGamesLabel.Size = new System.Drawing.Size(58, 22);
+            this._FindGamesLabel.Text = "Search";
             // 
-            // _AddGameButton
+            // _SearchGameTextBox
             // 
-            this._AddGameButton.Image = global::SAM.Picker.Resources.Search;
-            this._AddGameButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this._AddGameButton.Name = "_AddGameButton";
-            this._AddGameButton.Size = new System.Drawing.Size(83, 22);
-            this._AddGameButton.Text = "Add Game";
-            this._AddGameButton.Click += new System.EventHandler(this.OnAddGame);
+            this._SearchGameTextBox.BackColor = System.Drawing.Color.White;
+            this._SearchGameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this._SearchGameTextBox.Name = "_SearchGameTextBox";
+            this._SearchGameTextBox.Size = new System.Drawing.Size(100, 25);
+            this._SearchGameTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OnFilterUpdate);
+            // 
+            // _ToolStripSeparator3
+            // 
+            this._ToolStripSeparator3.Name = "_ToolStripSeparator3";
+            this._ToolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // _FilterDropDownButton
             // 
@@ -170,60 +175,36 @@
             this._FilterJunkMenuItem.Text = "Show &junk";
             this._FilterJunkMenuItem.CheckedChanged += new System.EventHandler(this.OnFilterUpdate);
             // 
-            // _ToolStripSeparator3
+            // _AddGameButton
             // 
-            this._ToolStripSeparator3.Name = "_ToolStripSeparator3";
-            this._ToolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this._AddGameButton.Image = global::SAM.Picker.Resources.Plus;
+            this._AddGameButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this._AddGameButton.Name = "_AddGameButton";
+            this._AddGameButton.Size = new System.Drawing.Size(83, 22);
+            this._AddGameButton.Text = "Add Game";
+            this._AddGameButton.Click += new System.EventHandler(this.OnAddGame);
             // 
-            // _FindGamesLabel
+            // _AddGameTextBox
             // 
-            this._FindGamesLabel.Name = "_FindGamesLabel";
-            this._FindGamesLabel.Size = new System.Drawing.Size(33, 22);
-            this._FindGamesLabel.Text = "Filter";
-            // 
-            // _SearchGameTextBox
-            // 
-            this._SearchGameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this._SearchGameTextBox.Name = "_SearchGameTextBox";
-            this._SearchGameTextBox.Size = new System.Drawing.Size(100, 25);
-            this._SearchGameTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OnFilterUpdate);
-            // 
-            // _GameListView
-            // 
-            this._GameListView.BackColor = System.Drawing.Color.Black;
-            this._GameListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._GameListView.ForeColor = System.Drawing.Color.White;
-            this._GameListView.HideSelection = false;
-            this._GameListView.LargeImageList = this._LogoImageList;
-            this._GameListView.Location = new System.Drawing.Point(0, 25);
-            this._GameListView.MultiSelect = false;
-            this._GameListView.Name = "_GameListView";
-            this._GameListView.Size = new System.Drawing.Size(742, 245);
-            this._GameListView.SmallImageList = this._LogoImageList;
-            this._GameListView.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this._GameListView.TabIndex = 0;
-            this._GameListView.TileSize = new System.Drawing.Size(184, 69);
-            this._GameListView.UseCompatibleStateImageBehavior = false;
-            this._GameListView.VirtualMode = true;
-            this._GameListView.ItemActivate += new System.EventHandler(this.OnActivateGame);
-            this._GameListView.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.OnGameListViewRetrieveVirtualItem);
-            this._GameListView.SearchForVirtualItem += new System.Windows.Forms.SearchForVirtualItemEventHandler(this.OnGameListViewSearchForVirtualItem);
+            this._AddGameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this._AddGameTextBox.Name = "_AddGameTextBox";
+            this._AddGameTextBox.Size = new System.Drawing.Size(100, 25);
             // 
             // _PickerStatusStrip
             // 
             this._PickerStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this._PickerStatusLabel,
             this._DownloadStatusLabel});
-            this._PickerStatusStrip.Location = new System.Drawing.Point(0, 270);
+            this._PickerStatusStrip.Location = new System.Drawing.Point(0, 572);
             this._PickerStatusStrip.Name = "_PickerStatusStrip";
-            this._PickerStatusStrip.Size = new System.Drawing.Size(742, 22);
+            this._PickerStatusStrip.Size = new System.Drawing.Size(1152, 22);
             this._PickerStatusStrip.TabIndex = 2;
             this._PickerStatusStrip.Text = "statusStrip";
             // 
             // _PickerStatusLabel
             // 
             this._PickerStatusLabel.Name = "_PickerStatusLabel";
-            this._PickerStatusLabel.Size = new System.Drawing.Size(727, 17);
+            this._PickerStatusLabel.Size = new System.Drawing.Size(1137, 17);
             this._PickerStatusLabel.Spring = true;
             this._PickerStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -247,18 +228,41 @@
             this._ListWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.DoDownloadList);
             this._ListWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.OnDownloadList);
             // 
+            // _GameListView
+            // 
+            this._GameListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(40)))), ((int)(((byte)(56)))));
+            this._GameListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._GameListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._GameListView.ForeColor = System.Drawing.Color.White;
+            this._GameListView.HideSelection = false;
+            this._GameListView.LargeImageList = this._LogoImageList;
+            this._GameListView.Location = new System.Drawing.Point(0, 25);
+            this._GameListView.MultiSelect = false;
+            this._GameListView.Name = "_GameListView";
+            this._GameListView.Size = new System.Drawing.Size(1152, 547);
+            this._GameListView.SmallImageList = this._LogoImageList;
+            this._GameListView.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this._GameListView.TabIndex = 0;
+            this._GameListView.TileSize = new System.Drawing.Size(184, 69);
+            this._GameListView.UseCompatibleStateImageBehavior = false;
+            this._GameListView.VirtualMode = true;
+            this._GameListView.ItemActivate += new System.EventHandler(this.OnActivateGame);
+            this._GameListView.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.OnGameListViewRetrieveVirtualItem);
+            this._GameListView.SearchForVirtualItem += new System.Windows.Forms.SearchForVirtualItemEventHandler(this.OnGameListViewSearchForVirtualItem);
+            // 
             // GamePicker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 292);
+            this.ClientSize = new System.Drawing.Size(1152, 594);
             this.Controls.Add(this._GameListView);
             this.Controls.Add(this._PickerStatusStrip);
             this.Controls.Add(this._PickerToolStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(714, 298);
             this.Name = "GamePicker";
-            this.Text = "Steam Achievement Manager 7.2 ";
-            this.Load += new System.EventHandler(this.GamePicker_Load);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Steam Achievement Manager 8.0 - Picker ";
             this._PickerToolStrip.ResumeLayout(false);
             this._PickerToolStrip.PerformLayout();
             this._PickerStatusStrip.ResumeLayout(false);

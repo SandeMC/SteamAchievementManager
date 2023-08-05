@@ -20,9 +20,9 @@
  *    distribution.
  */
 
+using SAM.API.Interfaces;
 using System;
 using System.Runtime.InteropServices;
-using SAM.API.Interfaces;
 
 namespace SAM.API.Wrappers
 {
