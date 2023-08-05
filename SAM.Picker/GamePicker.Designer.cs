@@ -29,6 +29,8 @@
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.ToolStripSeparator _ToolStripSeparator1;
+            System.Windows.Forms.ToolStripSeparator _ToolStripSeparator2;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GamePicker));
             this._LogoImageList = new System.Windows.Forms.ImageList(this.components);
             this._CallbackTimer = new System.Windows.Forms.Timer(this.components);
@@ -41,51 +43,34 @@
             this._FilterDemosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._FilterModsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._FilterJunkMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._ToolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this._FindGamesLabel = new System.Windows.Forms.ToolStripLabel();
+            this._SearchGameTextBox = new System.Windows.Forms.ToolStripTextBox();
             this._GameListView = new SAM.Picker.DoubleBufferedListView();
             this._PickerStatusStrip = new System.Windows.Forms.StatusStrip();
             this._PickerStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this._DownloadStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this._LogoWorker = new System.ComponentModel.BackgroundWorker();
             this._ListWorker = new System.ComponentModel.BackgroundWorker();
-            this._ToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this._ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this._ToolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this._FindGamesLabel = new System.Windows.Forms.ToolStripLabel();
-            this._SearchGameTextBox = new System.Windows.Forms.ToolStripTextBox();
+            _ToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            _ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this._PickerToolStrip.SuspendLayout();
             this._PickerStatusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // _ToolStripSeparator1
             // 
-            this._ToolStripSeparator1.Name = "_ToolStripSeparator1";
-            this._ToolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            _ToolStripSeparator1.Name = "_ToolStripSeparator1";
+            _ToolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // _ToolStripSeparator2
             // 
             _ToolStripSeparator2.Name = "_ToolStripSeparator2";
             _ToolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // _ToolStripSeparator3
-            // 
-            this._ToolStripSeparator3.Name = "_ToolStripSeparator3";
-            this._ToolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // _FindGamesLabel
-            // 
-            this._FindGamesLabel.Name = "_FindGamesLabel";
-            this._FindGamesLabel.Size = new System.Drawing.Size(33, 22);
-            this._FindGamesLabel.Text = "Filter";
-            // 
-            // _SearchGameTextBox
-            // 
-            this._SearchGameTextBox.Name = "_SearchGameTextBox";
-            this._SearchGameTextBox.Size = new System.Drawing.Size(100, 25);
-            this._SearchGameTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OnFilterUpdate);
-            //
             // _LogoImageList
             // 
-            this._LogoImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this._LogoImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth24Bit;
             this._LogoImageList.ImageSize = new System.Drawing.Size(184, 69);
             this._LogoImageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
@@ -97,20 +82,21 @@
             // _PickerToolStrip
             // 
             this._PickerToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                this._RefreshGamesButton,
-                this._ToolStripSeparator1,
-                this._AddGameTextBox,
-                this._AddGameButton,
-                this._ToolStripSeparator2,
-                this._FilterDropDownButton,
-                this._ToolStripSeparator3,
-                this._FindGamesLabel,
-                this._SearchGameTextBox});
+            this._RefreshGamesButton,
+            _ToolStripSeparator1,
+            this._AddGameTextBox,
+            this._AddGameButton,
+            _ToolStripSeparator2,
+            this._FilterDropDownButton,
+            this._ToolStripSeparator3,
+            this._FindGamesLabel,
+            this._SearchGameTextBox});
             this._PickerToolStrip.Location = new System.Drawing.Point(0, 0);
             this._PickerToolStrip.Name = "_PickerToolStrip";
             this._PickerToolStrip.Size = new System.Drawing.Size(742, 25);
             this._PickerToolStrip.TabIndex = 1;
             this._PickerToolStrip.Text = "toolStrip1";
+            this._PickerToolStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this._PickerToolStrip_ItemClicked);
             // 
             // _RefreshGamesButton
             // 
@@ -123,6 +109,7 @@
             // 
             // _AddGameTextBox
             // 
+            this._AddGameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this._AddGameTextBox.Name = "_AddGameTextBox";
             this._AddGameTextBox.Size = new System.Drawing.Size(100, 25);
             // 
@@ -183,11 +170,30 @@
             this._FilterJunkMenuItem.Text = "Show &junk";
             this._FilterJunkMenuItem.CheckedChanged += new System.EventHandler(this.OnFilterUpdate);
             // 
+            // _ToolStripSeparator3
+            // 
+            this._ToolStripSeparator3.Name = "_ToolStripSeparator3";
+            this._ToolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // _FindGamesLabel
+            // 
+            this._FindGamesLabel.Name = "_FindGamesLabel";
+            this._FindGamesLabel.Size = new System.Drawing.Size(33, 22);
+            this._FindGamesLabel.Text = "Filter";
+            // 
+            // _SearchGameTextBox
+            // 
+            this._SearchGameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this._SearchGameTextBox.Name = "_SearchGameTextBox";
+            this._SearchGameTextBox.Size = new System.Drawing.Size(100, 25);
+            this._SearchGameTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OnFilterUpdate);
+            // 
             // _GameListView
             // 
             this._GameListView.BackColor = System.Drawing.Color.Black;
             this._GameListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._GameListView.ForeColor = System.Drawing.Color.White;
+            this._GameListView.HideSelection = false;
             this._GameListView.LargeImageList = this._LogoImageList;
             this._GameListView.Location = new System.Drawing.Point(0, 25);
             this._GameListView.MultiSelect = false;
@@ -251,13 +257,15 @@
             this.Controls.Add(this._PickerToolStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GamePicker";
-            this.Text = "Steam Achievement Manager 7.0 | Pick a game... Any game...";
+            this.Text = "Steam Achievement Manager 7.2 ";
+            this.Load += new System.EventHandler(this.GamePicker_Load);
             this._PickerToolStrip.ResumeLayout(false);
             this._PickerToolStrip.PerformLayout();
             this._PickerStatusStrip.ResumeLayout(false);
             this._PickerStatusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
 	}
 
 	#endregion
@@ -281,8 +289,6 @@
         private System.ComponentModel.BackgroundWorker _ListWorker;
         private System.Windows.Forms.ToolStripTextBox _SearchGameTextBox;
         private System.Windows.Forms.ToolStripLabel _FindGamesLabel;
-	private System.Windows.Forms.ToolStripSeparator _ToolStripSeparator1;
-	private System.Windows.Forms.ToolStripSeparator _ToolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator _ToolStripSeparator3;
     }
 }
