@@ -1,4 +1,5 @@
 # About this fork
+## I recommend you to use the [syntax-tm's fork](https://github.com/syntax-tm/SteamAchievementManager) instead as it's a proper update and rewrite of the app.
 This is a fork of the original version at [gibbed/SteamAchievementManager](https://github.com/gibbed/SteamAchievementManager). I applied following PR's to it as gibbed does not seem to work on it anymore:
 - [#128](https://github.com/gibbed/SteamAchievementManager/pull/128)
 - [#133](https://github.com/gibbed/SteamAchievementManager/pull/133)
