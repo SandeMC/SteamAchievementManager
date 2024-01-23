@@ -1,5 +1,7 @@
 # DEPRECATED
 **Use [syntax-tm's fork](https://github.com/syntax-tm/SteamAchievementManager) instead as it's a proper update and rewrite of the app.**
+
+**On Linux, use [SAMRewritten](https://github.com/PaulCombal/SamRewritten).**
 # This fork
 Following PR's were merged to this fork:
 - [#128](https://github.com/gibbed/SteamAchievementManager/pull/128)
