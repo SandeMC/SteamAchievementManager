@@ -1,17 +1,18 @@
-# About this fork
-## I recommend you to use the [syntax-tm's fork](https://github.com/syntax-tm/SteamAchievementManager) instead as it's a proper update and rewrite of the app.
-This is a fork of the original version at [gibbed/SteamAchievementManager](https://github.com/gibbed/SteamAchievementManager). I applied following PR's to it as gibbed does not seem to work on it anymore:
+# DEPRECATED
+**Use [syntax-tm's fork](https://github.com/syntax-tm/SteamAchievementManager) instead as it's a proper update and rewrite of the app.**
+# This fork
+Following PR's were merged to this fork:
 - [#128](https://github.com/gibbed/SteamAchievementManager/pull/128)
 - [#133](https://github.com/gibbed/SteamAchievementManager/pull/133)
 - [#160](https://github.com/gibbed/SteamAchievementManager/pull/160)
 - [#228](https://github.com/gibbed/SteamAchievementManager/pull/228)
 - [#322](https://github.com/gibbed/SteamAchievementManager/pull/322)
 
-I will also apply any future PR's may any appear here or there. I'm not really a coding guy though, so I probably won't contribute much myself.
+I have also replaced icons over the app and made minor UI changes.
 
 [Download latest release](https://github.com/SandeMC/SteamAchievementManager/releases/latest).
 
-# Original Steam Achievement Manager Readme
+# Steam Achievement Manager
 
 Steam Achievement Manager (SAM) is a lightweight, portable application used to manage achievements and statistics in the popular PC gaming platform Steam. This application requires the [Steam client](https://store.steampowered.com/about/), a Steam account and network access. Steam must be running and the user must be logged in.
 
